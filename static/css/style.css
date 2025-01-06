@@ -1,0 +1,45 @@
+/* Nasconde inizialmente i campi regione, provincia, comune e le loro etichette */
+#cod_regione_cliente, #cod_provincia_cliente, #cod_comune_cliente, /* Selettori per i campi di input della regione, provincia e comune */
+#label_regione_cliente, #label_provincia_cliente, #label_comune_cliente /* Selettori per le etichette corrispondenti ai campi di input */ 
+{
+    display: none; /* Imposta il display su 'none', nascondendo questi elementi dalla visualizzazione */
+}
+.light .bg-theme 
+{
+    background-color: #f8f9fa; /* Sfondo chiaro */
+}
+
+.dark .bg-theme 
+{
+    background-color: #212529; /* Sfondo scuro */
+}
+
+body.dark
+{
+    background-color: #212529 !important; /* Sfondo scuro */
+}
+
+body.light
+{
+    background-color: #f8f9fa !important; /* Sfondo chiaro */
+}
+
+.light .text-theme 
+{
+    color: #000; /* Testo scuro */
+}
+
+.dark .text-theme 
+{
+    color: #fff; /* Testo chiaro */
+}
+
+.light .nav-tabs .nav-link 
+{
+    color: #212529;
+}
+
+.dark .nav-tabs .nav-link 
+{
+    color: #f8f9fa;
+}

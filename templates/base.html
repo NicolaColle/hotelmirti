@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Mirti</title>
+    <!-- Inclusione del file CSS di Bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        /* Modalità dark */
+        body.dark {
+            background-color: #121212;
+            color: #f8f9fa;
+        }
+        
+        /* Modalità light */
+        body.light {
+            background-color: #ffffff;
+            color: #212529;
+        }
+    </style>
+</head>
+<body class="light">
+
+<!-- Include l'header definito in un file separato -->
+{% include 'header.html' %}
+
+<div class="container d-flex justify-content-end mt-3">
+    <!-- Pulsante per switch tema -->
+    <button id="theme-switcher" class="btn btn-outline-secondary">Dark Mode</button>
+</div>
+
+<!-- Gestisce la visualizzazione di messaggi flash, se presenti -->
+{% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <div class="container mt-3">
+            {% for category, message in messages %}
+                <!-- Visualizza ogni messaggio come un alert di Bootstrap -->
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<!-- Sezione principale per il contenuto dinamico delle pagine -->
+<div class="container mt-4">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Include il footer definito in un file separato -->
+{% include 'footer.html' %}
+
+<!-- Script per gestire lo switch tema -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const body = document.body;
+
+        // Recupera il tema salvato in localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.remove('light', 'dark');
+            body.classList.add(savedTheme);
+            body.setAttribute("data-bs-theme", savedTheme);
+            themeSwitcher.textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+        }
+
+        // Event listener per il pulsante di switch
+        themeSwitcher.addEventListener('click', () => {
+            const currentTheme = body.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.classList.remove('light', 'dark');
+            body.classList.add(newTheme);
+            body.setAttribute("data-bs-theme", newTheme);
+            themeSwitcher.textContent = newTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+            localStorage.setItem('theme', newTheme); // Salva il tema scelto
+        });
+    });
+</script>
+
+</body>
+</html>

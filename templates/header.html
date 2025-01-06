@@ -1,0 +1,53 @@
+<!-- Barra di navigazione e header del sito -->
+<div class="p-2 mb-2 bg-theme text-theme">
+    <!-- Logo del sito, posizionato a sinistra -->
+    <div style="float: left;">
+        <img src="{{ url_for('static', filename='images/logo_sx.png') }}" class="rounded float-start" alt="Logo" width="180" height="150">
+    </div>
+    
+    <!-- Citazione, posizionata a destra -->
+    <div style="float: right;">
+        <p><em>Chiunque abbia il controllo della Tecnologia<br>ha nelle mani il mondo.<br>03/08/2014</em></p>
+    </div>
+    
+    <!-- Contenuto della navigazione -->
+    {% if not session.get('is_admin') %}
+        <!-- Menu di navigazione per gli utenti non amministratori -->
+        <ul class="nav nav-tabs" style="clear: both;width: 1200px;margin: auto;">
+            <li class="nav-item">
+                <a class="nav-link text-theme" href="{{ url_for('pages.home') }}"><i class="bi bi-house"></i> Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-theme" href="{{ url_for('pages.servizi_offerti') }}"><i class="bi bi-activity"></i> Servizi offerti</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-theme" href="{{ url_for('pages.nuova_prenotazione') }}"><i class="bi bi-calendar3-event"></i> Prenota</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-theme" href="{{ url_for('pages.modifica_prenotazione') }}"><i class="bi bi-pencil"></i> Modifica</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-theme" href="{{ url_for('pages.cancella_prenotazione') }}"><i class="bi bi-x-lg"></i> Cancella</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-theme" href="{{ url_for('pages.privacy_policy') }}"><i class="bi bi-lock"></i> Privacy Policy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="{{ url_for('admin.login_admin') }}"><i class="bi bi-shield-lock"></i> Admin</a>
+            </li>
+        </ul>
+    {% else %}
+        <!-- Link visibili solo agli admin autenticati -->
+        <ul class="nav nav-tabs" style="clear: both;width: 1200px;margin: auto;">
+            <li class="nav-item">
+                <a class="nav-link text-theme" href="{{ url_for('pages.nuova_prenotazione') }}"><i class="bi bi-calendar3-event"></i> Nuova prenotazione</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-theme" href="{{ url_for('pages.stampa_prenotazioni') }}"><i class="bi bi-calendar-check"></i> Stanze prenotate</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="{{ url_for('pages.logout') }}"><i class="bi bi-shield-lock"></i> LogOut</a>
+            </li>
+        </ul>
+    {% endif %}
+</div>

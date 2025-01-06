@@ -1,0 +1,34 @@
+{% extends 'base.html' %}  <!-- Estende il template base per mantenere la struttura comune della pagina -->
+
+{% block content %}  <!-- Inizio del blocco content che conterrà il contenuto specifico della pagina -->
+
+<h3 class="text-center mt-4">Stampa Prenotazioni</h3>  <!-- Titolo centrato con margine top -->
+<main class="container mt-5">  <!-- Contenitore principale con margine top -->
+    <div class="row justify-content-center">  <!-- Riga per centrare il contenuto -->
+        <div class="col-md-12">  <!-- Colonna che occupa tutta la larghezza su dispositivi di media grandezza -->
+            <table class='table table-bordered table-theme'>  <!-- Tabella con bordi e tema scuro -->
+                <thead>  <!-- Intestazione della tabella -->
+                    <tr>  <!-- Riga di intestazione -->
+                        <th>COGNOME</th>  <!-- Colonna per il cognome -->
+                        <th>NOME</th>  <!-- Colonna per il nome -->
+                        <th>EMAIL</th>  <!-- Colonna per l'email -->
+                        <th>TIPO STANZA</th>  <!-- Colonna per il tipo di stanza -->
+                        <th>NUMERO STANZE</th>  <!-- Colonna per il numero di stanze -->
+                        <th>DATA INIZIO</th>  <!-- Colonna per la data di inizio prenotazione -->
+                        <th>DATA FINE</th>  <!-- Colonna per la data di fine prenotazione -->
+                        <th>MODIFICA</th>  <!-- Colonna per il pulsante di modifica -->
+                        <th>CANCELLA</th>  <!-- Colonna per il pulsante di cancellazione -->
+                    </tr>
+                </thead>
+                <tbody>  <!-- Corpo della tabella dove verranno aggiunte dinamicamente le righe delle prenotazioni -->
+                    <!-- Le righe delle prenotazioni verranno aggiunte qui dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<!-- Collega il file JavaScript per gestire le funzionalità di modifica e cancellazione -->
+<script src="{{ url_for('static', filename='js/stampa_prenotazioni_script.js') }}"></script>
+
+{% endblock %}  <!-- Fine del blocco content -->

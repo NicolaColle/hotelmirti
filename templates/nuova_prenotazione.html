@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3 class="text-center mt-4">Prenotazione Online</h3>
+<main class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <form id="booking-form" class="p-4 bg-theme border border-theme rounded">
+                <!-- Sezione per i dati del cliente -->
+                <div class="mb-3 text-theme">
+                    <label for="nome_cliente" class="form-label">Nome:</label>
+                    <input type="text" id="nome_cliente" name="nome_cliente" class="form-control" required>
+                </div>
+    
+                <div class="mb-3 text-theme">
+                    <label for="cognome_cliente" class="form-label">Cognome:</label>
+                    <input type="text" id="cognome_cliente" name="cognome_cliente" class="form-control" required>
+                </div>
+    
+                <!-- Sezione per i dati di nascita del cliente (Stato, Regione, Provincia, Comune) -->
+                <div class="mb-3 text-theme">
+                    <label for="cod_stato_cliente" class="form-label">Stato di nascita:</label>
+                    <select id="cod_stato_cliente" name="cod_stato_cliente" class="form-select" required size="5">
+                        <!-- Popola dinamicamente con gli stati disponibili -->
+                    </select>
+                </div>
+    
+                <div class="mb-3 text-theme">
+                    <label for="cod_regione_cliente" class="form-label">Regione di nascita:</label>
+                    <select id="cod_regione_cliente" name="cod_regione_cliente" class="form-select" required size="5">
+                        <!-- Popola dinamicamente con le regioni disponibili -->
+                    </select>
+                </div>
+    
+                <div class="mb-3 text-theme">
+                    <label for="cod_provincia_cliente" class="form-label">Provincia di nascita:</label>
+                    <select id="cod_provincia_cliente" name="cod_provincia_cliente" class="form-select" required size="5">
+                        <!-- Popola dinamicamente con le province disponibili -->
+                    </select>
+                </div>
+    
+                <div class="mb-3 text-theme">
+                    <label for="cod_comune_cliente" class="form-label">Comune di nascita:</label>
+                    <select id="cod_comune_cliente" name="cod_comune_cliente" class="form-select" required size="5">
+                        <!-- Popola dinamicamente con i comuni disponibili -->
+                    </select>
+                </div>
+    
+                <div class="mb-3 text-theme">
+                    <label for="data_nascita_cliente" class="form-label">Data di nascita:</label>
+                    <input type="date" id="data_nascita_cliente" name="data_nascita_cliente" class="form-control" required>
+                </div>
+    
+                <!-- Sezione per i dati di contatto del cliente -->
+                <div class="mb-3 text-theme">
+                    <label for="email_cliente" class="form-label">Email personale:</label>
+                    <input type="email" id="email_cliente" name="email_cliente" class="form-control" required>
+                </div>
+    
+                <div class="mb-3 text-theme">
+                    <label for="password_cliente">Password:</label>
+                    <input type="password" id="password_cliente" name="password_cliente" class="form-control" required>
+                </div>
+    
+                <!-- Sezione per le date di soggiorno -->
+                <div class="mb-3 text-theme">
+                    <label for="data_inizio" class="form-label">Data check-in:</label>
+                    <input type="date" id="data_inizio" name="data_inizio" class="form-control" required>
+                </div>
+    
+                <div class="mb-3 text-theme">
+                    <label for="data_fine" class="form-label">Data check-out:</label>
+                    <input type="date" id="data_fine" name="data_fine" class="form-control" required>
+                </div>
+    
+                <!-- Sezione per la tipologia di stanza -->
+                <div class="mb-3 text-theme">
+                    <label for="cod_tipologia_stanza" class="form-label">Tipologia Stanza:</label>
+                    <select id="cod_tipologia_stanza" name="cod_tipologia_stanza" class="form-select" required>
+                        <!-- Le opzioni verranno popolate dinamicamente -->
+                    </select>
+                </div>
+    
+                <!-- Sezione per il numero di stanze -->
+                <div class="mb-3 text-theme">
+                    <label for="numero_stanze" class="form-label">Numero di Stanze:</label>
+                    <input type="number" id="numero_stanze" name="numero_stanze" class="form-control" required min="1" value="1">
+                    <small id="stanze_disponibili_info" class="text-theme"></small>
+                </div>
+    
+                <button type="submit" class="btn btn-primary w-100">Prenota</button>
+            </form>
+    
+            <!-- Messaggio di conferma della prenotazione -->
+            <div id="confirmation" class="alert alert-success mt-4" style="display: none;">
+                <p id="confirmation-message"></p>
+            </div>
+        </div>
+    </div>    
+</main>
+
+<!-- Includiamo il file JavaScript per gestire la prenotazione -->
+<script src="{{ url_for('static', filename='js/nuova_prenotazione_script.js') }}"></script>
+
+{% endblock %}

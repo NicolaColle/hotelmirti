@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Titolo della pagina di modifica prenotazione -->
+<h3 class="text-center mt-4">Modifica Prenotazione</h3>
+
+<!-- Sezione principale per la modifica della prenotazione -->
+<main class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <form id="modify-booking-form" class="p-4 bg-theme border border-theme rounded">
+
+                <!-- Email e password per caricare la prenotazione -->
+                <div class="mb-3 text-theme">
+                    <label for="email_cliente" class="form-label">Email:</label>
+                    <input type="email" id="email_cliente" name="email_cliente" class="form-control" required>
+                </div>
+                <div class="mb-3 text-theme">
+                    <label for="password_cliente" class="form-label">Password:</label>
+                    <input type="password" id="password_cliente" name="password_cliente" class="form-control" required>
+                </div>
+                <div class="mb-3 text-theme">
+                    <label for="cod_prenotazione_cliente" class="form-label">Codice Prenotazione:</label>
+                    <input type="cod_prenotazione" id="cod_prenotazione_cliente" name="cod_prenotazione_cliente" class="form-control" required>
+                </div>
+                <!-- Bottone per caricare la prenotazione -->
+                <button type="button" id="load-booking" class="btn btn-secondary w-100 mb-3">Carica Prenotazione</button>
+
+                <!-- Messaggio di errore (nascosto per default) -->
+                <div id="error-message" class="text-danger mb-3" style="display: none;"></div>
+
+                <!-- Dettagli della prenotazione da modificare (visibile dopo il caricamento della prenotazione) -->
+                <div id="booking-details" style="display: none;">
+
+                    <!-- Dati Cliente -->
+                    <div class="mb-3 text-theme">
+                        <label for="cod_cliente" class="form-label">Codice Cliente:</label>
+                        <input type="text" id="cod_cliente" name="cod_cliente" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3 text-theme">
+                        <label for="nome_cliente" class="form-label">Nome:</label>
+                        <input type="text" id="nome_cliente" name="nome_cliente" class="form-control">
+                    </div>
+                    <div class="mb-3 text-theme">
+                        <label for="cognome_cliente" class="form-label">Cognome:</label>
+                        <input type="text" id="cognome_cliente" name="cognome_cliente" class="form-control">
+                    </div>
+                    <div class="mb-3 text-theme">
+                        <label for="data_nascita_cliente" class="form-label">Data di Nascita:</label>
+                        <input type="date" id="data_nascita_cliente" name="data_nascita_cliente" class="form-control">
+                    </div>
+                    <div class="mb-3 text-theme">
+                        <label for="stato_cliente" class="form-label">Stato Cliente:</label>
+                        <input type="text" id="stato_cliente" name="stato_cliente" class="form-control">
+                    </div>
+                    <div class="mb-3 text-theme">
+                        <label for="regione_cliente" class="form-label">Regione Cliente:</label>
+                        <input type="text" id="regione_cliente" name="regione_cliente" class="form-control">
+                    </div>
+                    <div class="mb-3 text-theme">
+                        <label for="provincia_cliente" class="form-label">Provincia Cliente:</label>
+                        <input type="text" id="provincia_cliente" name="provincia_cliente" class="form-control">
+                    </div>
+                    <div class="mb-3 text-theme">
+                        <label for="comune_cliente" class="form-label">Comune Cliente:</label>
+                        <input type="text" id="comune_cliente" name="comune_cliente" class="form-control">
+                    </div>
+
+                    <!-- Dati Prenotazione -->
+                    <div class="mb-3 text-theme">
+                        <label for="cod_prenotazione" class="form-label">Codice Prenotazione:</label>
+                        <input type="text" id="cod_prenotazione" name="cod_prenotazione" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3 text-theme">
+                    <label for="cod_tipologia_stanza" class="form-label">Tipologia Stanza:</label>
+                    <select id="cod_tipologia_stanza" name="cod_tipologia_stanza" class="form-select" required>
+                        <!-- Le opzioni verranno popolate dinamicamente -->
+                    </select>
+                    </div>
+                    <div class="mb-3 text-theme">
+                        <label for="data_inizio" class="form-label">Data Inizio:</label>
+                        <input type="date" id="data_inizio" name="data_inizio" class="form-control" required>
+                    </div>
+                    <div class="mb-3 text-theme">
+                        <label for="data_fine" class="form-label">Data Fine:</label>
+                        <input type="date" id="data_fine" name="data_fine" class="form-control" required>
+                    </div>
+                    <div class="mb-3 text-theme">
+                        <label for="numero_stanze" class="form-label">Numero di Stanze:</label>
+                        <input type="number" id="numero_stanze" name="numero_stanze" class="form-control" required min="1">
+                        <small id="stanze_disponibili_info" class="text-muted"></small>
+                    </div>
+
+                    <!-- Bottone per inviare la modifica della prenotazione -->
+                    <button type="submit" class="btn btn-primary w-100">Modifica Prenotazione</button>
+                </div>
+            </form>
+
+            <!-- Messaggio di conferma (nascosto per default) -->
+            <div id="confirmation" class="alert alert-success mt-4" style="display: none;">
+                <p id="confirmation-message"></p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Inclusione del file JavaScript per gestire le funzionalità della pagina -->
+<script src="{{ url_for('static', filename='js/modifica_prenotazione_script.js') }}"></script>
+
+{% endblock %}

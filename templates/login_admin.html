@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Titolo della pagina di login -->
+<h3 class="text-center mt-4">Accesso Amministratore</h3>
+
+<!-- Sezione principale per il login -->
+<main class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <form method="POST" action="{{ url_for('admin.login_admin') }}" class="p-4 bg-theme border border-theme rounded">
+                <!-- Campo per l'email -->
+                <div class="mb-3 text-theme">
+                    <label for="email" class="form-label text-theme">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <!-- Campo per la password -->
+                <div class="mb-3 text-theme">
+                    <label for="password" class="form-label text-theme">Password:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+
+                <!-- Pulsante per inviare il modulo di login -->
+                <button type="submit" class="btn btn-primary w-100">Accedi</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Contenitore principale della pagina -->
+<div class="container my-5">
+    <h3 class="text-center">Benvenuti all’Hotel Mirti</h3>
+
+    <!-- Carousel per le immagini -->
+    <div id="carouselExampleSlidesOnly" class="carousel slide mt-4" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+            <!-- Prima immagine del carousel -->
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='images/image01.jpg') }}" class="d-block mx-auto rounded" alt="Immagine 1" style="max-height: 400px; object-fit: cover;">
+            </div>
+            <!-- Seconda immagine del carousel -->
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/image02.jpg') }}" class="d-block mx-auto rounded" alt="Immagine 2" style="max-height: 400px; object-fit: cover;">
+            </div>
+            <!-- Terza immagine del carousel -->
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/image03.jpg') }}" class="d-block mx-auto rounded" alt="Immagine 3" style="max-height: 400px; object-fit: cover;">
+            </div>
+            <!-- Quarta immagine del carousel -->
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/image04.jpg') }}" class="d-block mx-auto rounded" alt="Immagine 4" style="max-height: 400px; object-fit: cover;">
+            </div>
+            <!-- Quinta immagine del carousel -->
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/image05.jpg') }}" class="d-block mx-auto rounded" alt="Immagine 5" style="max-height: 400px; object-fit: cover;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Descrizione dell'hotel -->
+    <div class="mt-5 bg-theme text-theme p-4 rounded shadow">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Descrizione generale dell'hotel -->
+                <p class="fs-5 text-start">
+                    L’Hotel Mirti è una struttura di recente ristrutturazione che offre camere moderne ed eleganti.
+                    Ogni camera è dotata di Smart TV, frigo mini-bar, cassaforte e cuscini tipo Memory. In tutte le stanze è presente
+                    un bagno privato con cabina-doccia, asciugacapelli e prodotti da bagno in omaggio.
+                </p>
+            </div>
+            <hr class="border-theme my-4">
+            <div class="col-md-12">
+                <!-- Descrizione della posizione dell'hotel -->
+                <p class="fs-5 text-start">
+                    La struttura ha una posizione strategica, a soli 100 metri da Piazza dei Mirti e dalla stazione della Metro C,
+                    ideale per chi desidera muoversi con facilità a Roma.
+                </p>
+            </div>
+            <hr class="border-theme my-4">
+            <div class="col-md-12">
+                <!-- Informazioni sui servizi dell'hotel -->
+                <p class="fs-5 text-start">
+                    L'Hotel dispone di 15 camere, con Wi-Fi gratuito in tutta la struttura. La reception è aperta 24 ore su 24.
+                    Il check-in è disponibile dalle 14:00, mentre il check-out deve essere effettuato entro le 11:00.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

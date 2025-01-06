@@ -1,0 +1,37 @@
+{% extends 'base.html' %}  <!-- Estende il template base per mantenere la struttura comune della pagina -->
+
+{% block content %}  <!-- Inizio del blocco content che conterrà il contenuto specifico della pagina -->
+
+<div class="container my-5">  <!-- Contenitore per il contenuto della pagina con margine verticale -->
+    <h3 class="text-center">I nostri servizi</h3>  <!-- Titolo della sezione centrato -->
+
+    <!-- Definisce un elenco di servizi in formato dizionario -->
+    {% set servizi = [  
+        {'nome': 'Camera Singola', 'descrizione': 'La nostra Camera Singola è una stanza per una persona con letto alla francese e cuscini in memory foam. Nella nostra Camera Singola, come in tutte le stanze dell’Hotel Mirti, il wifi è gratuito ed illimitato; i clienti hanno a disposizione una scrivania ed un telefono con chiamate urbane gratuite; sono dotate di bagno interno, con doccia e bidet, set di cortesia ed asciugamani.', 'img': 'singola.jpg'},
+        {'nome': 'Camera Doppia', 'descrizione': 'La nostra Camera Doppia è una stanza per 2 persone con due letti singoli ed i cuscini in memory foam. Nella nostra Camera Doppia, come in tutte le stanze dell’Hotel Mirti, il wifi è gratuito ed illimitato; i clienti hanno a disposizione una scrivania ed un telefono con chiamate urbane gratuite; sono dotate di bagno interno, con doccia e bidet, set di cortesia ed asciugamani.', 'img': 'doppia.jpg'},
+        {'nome': 'Camera Matrimoniale', 'descrizione': 'La nostra Camera Matrimoniale è una stanza per 2 persone con letto matrimoniale divisibile ed i cuscini in memory foam. Nella nostra Camera Matrimoniale, come in tutte le stanze dell’Hotel Mirti, il wifi è gratuito ed illimitato; i clienti hanno a disposizione una scrivania ed un telefono con chiamate urbane gratuite; sono dotate di bagno interno, con doccia e bidet, set di cortesia ed asciugamani.', 'img': 'matrimoniale.jpg'},
+        {'nome': 'Camera Doppia con letto aggiuntivo', 'descrizione': 'La nostra Camera Doppia con letto aggiuntivo è una stanza per 3 persone con letto matrimoniale ed uno singolo ed i cuscini in memory foam; a richiesta si possono avere 3 letti singoli. Il wifi è gratuito ed illimitato; i clienti hanno a disposizione una scrivania ed un telefono con chiamate urbane gratuite; sono dotate di bagno interno, con doccia e bidet, set di cortesia ed asciugamani.', 'img': 'doppia_uno.jpg'},
+        {'nome': 'Camera Doppia con 2 letti aggiuntivi', 'descrizione': 'La nostra Camera Doppia con 2 letti aggiuntivi è una stanza per 4 persone con letto matrimoniale e due singoli ed i cuscini in memory foam; a richiesta si possono avere 4 letti singoli. Il wifi è gratuito ed illimitato; i clienti hanno a disposizione una scrivania ed un telefono con chiamate urbane gratuite; sono dotate di bagno interno, con doccia e bidet, set di cortesia ed asciugamani.', 'img': 'doppia_due.jpg'},
+        {'nome': 'Camera Economy', 'descrizione': 'La nostra Camera Economy è una stanza per 1 o 2 persone, con un letto alla francese ed i cuscini in memory foam. Il wifi è gratuito ed illimitato; i clienti hanno a disposizione una scrivania ed un telefono con chiamate urbane gratuite; sono dotate di bagno interno, con doccia e bidet, set di cortesia ed asciugamani.', 'img': 'economy.jpg'}
+    ] %}
+
+    {% for servizio in servizi %}  <!-- Ciclo attraverso ogni servizio definito nella lista 'servizi' -->
+    <div class="container my-4">  <!-- Contenitore per ogni servizio con margine verticale -->
+        <h5>{{ servizio.nome }}</h5>  <!-- Nome del servizio -->
+
+        <div class="row align-items-center">  <!-- Righe per allineare l'immagine e il testo -->
+            <!-- Colonna dell'immagine -->
+            <div class="col-md-4">  <!-- Colonna per l'immagine, con dimensione media di 4 -->
+                <img src="{{ url_for('static', filename='images/' + servizio.img) }}" class="img-fluid rounded" alt="{{ servizio.nome }}" style="max-height: 200px; object-fit: cover;">  <!-- Immagine del servizio con link dinamico, dimensione fluida e bordi arrotondati -->
+            </div>
+            <!-- Colonna del testo -->
+            <div class="col-md-8">  <!-- Colonna per la descrizione del servizio, con dimensione media di 8 -->
+                <p>{{ servizio.descrizione }}</p>  <!-- Descrizione del servizio -->
+            </div>
+        </div>
+    </div>
+    <hr>  <!-- Linea orizzontale separatrice tra i servizi -->
+    {% endfor %}  <!-- Fine del ciclo 'for' -->
+</div>
+
+{% endblock %}  <!-- Fine del blocco content -->

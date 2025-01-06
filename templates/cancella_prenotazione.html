@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Titolo della pagina -->
+<h3 class="text-center mt-4">Cancella Prenotazione</h3>
+<main class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <!-- Form per la cancellazione della prenotazione -->
+            <form id="delete-booking-form" class="p-4 bg-theme border border-theme rounded">
+                <!-- Campo per l'email del cliente -->
+                <div class="mb-3 text-theme">
+                    <label for="email_cliente" class="form-label">Email Cliente:</label>
+                    <input type="email" id="email_cliente" name="email_cliente" class="form-control" required>
+                </div>
+                <!-- Campo per la password del cliente -->
+                <div class="mb-3 text-theme">
+                    <label for="password_cliente" class="form-label">Password:</label>
+                    <input type="password" id="password_cliente" name="password_cliente" class="form-control" required>
+                </div>
+                <div class="mb-3 text-theme">
+                    <label for="cod_prenotazione_cliente" class="form-label">Codice Prenotazione:</label>
+                    <input type="cod_prenotazione" id="cod_prenotazione_cliente" name="cod_prenotazione_cliente" class="form-control" required>
+                </div>
+                <!-- Bottone per inviare la richiesta di cancellazione -->
+                <button type="button" id="delete-booking" class="btn btn-danger w-100">Cancella Prenotazione</button>
+            </form>
+            <!-- Messaggio di conferma -->
+            <div id="confirmation" class="alert alert-success mt-4" style="display: none;">
+                <p id="confirmation-message"></p>
+            </div>
+            <!-- Messaggio di errore -->
+            <div id="error" class="alert alert-danger mt-4" style="display: none;">
+                <p id="error-message"></p>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Collegamento al file JavaScript per la gestione della cancellazione -->
+<script src="{{ url_for('static', filename='js/cancella_prenotazione_script.js') }}"></script>
+{% endblock %}
